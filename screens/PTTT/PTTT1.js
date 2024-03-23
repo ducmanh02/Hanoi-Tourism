@@ -7,9 +7,13 @@ import {
   ScrollView,
   Dimensions,
   ImageBackground,
-  FlatList,TextInput
+  FlatList,
+  TextInput,
 } from "react-native";
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons/faLeftLong";
+
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const data = [
@@ -51,7 +55,11 @@ export default function PTTT1({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View></View>
+        <View>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()} >
+          <FontAwesomeIcon icon={faLeftLong} size={25} />
+          </TouchableOpacity>
+        </View>
         <View>
           <Text style={styles.logo}>Phong Tục Truyền Thống</Text>
         </View>
@@ -66,7 +74,7 @@ export default function PTTT1({ navigation }) {
           keyboardType="ascii-capable"
         />
       </View>
-      <Button title="Go back to Home" onPress={() => navigation.goBack()} />
+      
       <ScrollView style={styles.scrollView}>
         <FlatList
           data={data}
@@ -82,6 +90,7 @@ export default function PTTT1({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 20,
   },
   header: {
     marginTop: 20,
